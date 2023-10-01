@@ -9,7 +9,8 @@ async function getMenu() {
 
     return data;
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
+    throw new Error("Couldn't get the menu");
   }
 }
 
@@ -27,6 +28,7 @@ async function createOrder(order) {
     return data;
   } catch (err) {
     console.error(err.message);
+    throw new Error("Couldn't create the order");
   }
 }
 
@@ -38,6 +40,7 @@ async function getOrderById(id) {
     return data;
   } catch (err) {
     console.error(err.message);
+    throw new Error("Couldn't get the order");
   }
 }
 
@@ -54,7 +57,8 @@ async function updateOrderById(id, updatedOrder) {
     return `Successfully updated order id ${id}`;
   } catch (err) {
     console.error(err.message);
+    throw new Error("Couldn't update the order");
   }
 }
 
-export { getMenu, createOrder, getOrderById, updateOrderById };
+export { createOrder, getMenu, getOrderById, updateOrderById };
