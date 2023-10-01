@@ -37,6 +37,8 @@ async function getOrderById(id) {
     const res = await fetch(`${API_URL}/order/${id}`);
     const { data } = await res.json();
 
+    if (res.status === 404) throw new Error("No order with this ID");
+
     return data;
   } catch (err) {
     console.error(err.message);
