@@ -18,3 +18,5 @@ async function fetchAddress() {
 
   return { position, address };
 }
+
+export { fetchAddress };
