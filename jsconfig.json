@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "features/*": ["./src/Features/*"],
+      "utils/*": ["./src/Utils/*"],
+      "hooks/*": ["./src/Hooks/*"],
+      "contexts/*": ["./src/Contexts/*"],
+      "helpers/*": ["./src/Helpers/*"],
+      "services/*": ["./src/Services/*"]
+    }
+  }
+}
