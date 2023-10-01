@@ -1,6 +1,10 @@
 // Test ID: IIDSAT
 
-import { calcMinutesLeft, formatCurrency, formatDate } from "utils/helpers.js";
+import {
+  calcMinutesLeft,
+  formatCurrency,
+  formatDate,
+} from "helpers/helpers.js";
 
 const order = {
   id: "ABCDEF",
