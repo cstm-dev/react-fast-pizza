@@ -3,12 +3,12 @@ import Menu from "features/Menu/Menu.jsx";
 import { menuLoader } from "features/Menu/menuLoader";
 import CreateOrder from "features/Order/CreateOrder.jsx";
 import Order from "features/Order/Order.jsx";
+import { orderAction } from "features/Order/orderAction.js";
+import { orderLoader } from "features/Order/orderLoader.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "utils/AppLayout.jsx";
 import Error from "utils/Error.jsx";
 import Home from "utils/Home.jsx";
-import { orderAction } from "./Order/orderAction.js";
-import { orderLoader } from "./Order/orderLoader.js";
 
 const router = createBrowserRouter([
   {

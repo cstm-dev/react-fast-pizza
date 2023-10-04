@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Form, useActionData, useNavigation } from "react-router-dom";
 import Button from "utils/Button.jsx";
 
@@ -29,6 +30,7 @@ function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formErrors = useActionData();
+  const userName = useSelector((store) => store.user.userName);
   const cart = fakeCart;
 
   return (
@@ -44,6 +46,7 @@ function CreateOrder() {
             className="input flex-1"
             type="text"
             name="customer"
+            defaultValue={userName}
             required
           />
         </div>
