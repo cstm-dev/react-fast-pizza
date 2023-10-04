@@ -7,7 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "utils/AppLayout.jsx";
 import Error from "utils/Error.jsx";
 import Home from "utils/Home.jsx";
-import { orderAction } from "./Order/orderAction.jsx";
+import { orderAction } from "./Order/orderAction.js";
 import { orderLoader } from "./Order/orderLoader.js";
 
 const router = createBrowserRouter([
