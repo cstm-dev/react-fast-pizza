@@ -1,37 +1,24 @@
+import EmptyCart from "features/Cart/EmptyCart";
+import { getCart, getTotalPizzaPrice } from "features/Cart/cartSlice";
+import { getUser } from "features/User/userSlice";
+import { formatCurrency } from "helpers/helpers";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Form, useActionData, useNavigation } from "react-router-dom";
 import Button from "utils/Button.jsx";
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: "Mediterranean",
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: "Vegetable",
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: "Spinach and Mushroom",
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
-
 function CreateOrder() {
+  const [isPriority, setIsPriority] = useState(0);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formErrors = useActionData();
-  const userName = useSelector((state) => state.user.userName);
-  const cart = fakeCart;
+  const userName = useSelector(getUser);
+  const cart = useSelector(getCart);
+  const cartTotalPrize = useSelector(getTotalPizzaPrice);
+  const priorityPrize = isPriority ? cartTotalPrize * 0.2 : 0;
+  const priceToPay = cartTotalPrize + priorityPrize;
+
+  if (cart.length === 0) return <EmptyCart />;
 
   return (
     <div className="px-4 py-6">
@@ -81,16 +68,20 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
+            value={isPriority}
+            onChange={(e) => setIsPriority(e.target.checked)}
           />
           <label htmlFor="priority" className="font-medium">
-            Want to yo give your order priority?
+            Want to give your order priority?
           </label>
         </div>
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <Button type="primary" disabled={isSubmitting}>
-            {isSubmitting ? "Placing order..." : "Order now"}
+            {isSubmitting
+              ? "Placing order..."
+              : `Order now for ${formatCurrency(priceToPay)}`}
           </Button>
         </div>
       </Form>

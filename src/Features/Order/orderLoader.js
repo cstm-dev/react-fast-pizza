@@ -1,9 +1,13 @@
 import { getOrderById } from "services/apiRestaurant";
 
 async function orderLoader({ params }) {
-  const order = await getOrderById(params.orderId);
+  try {
+    const order = await getOrderById(params.orderId);
 
-  return order;
+    return order;
+  } catch (err) {
+    console.error(err.message);
+  }
 }
 
 export { orderLoader };
