@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "utils/AppLayout.jsx";
 import Error from "utils/Error.jsx";
 import Home from "utils/Home.jsx";
+import { updateOrderAction } from "./Order/updateOrderAction";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/order/:orderId",
         element: <Order />,
+        action: updateOrderAction,
         loader: orderLoader,
         errorElement: <Error />,
       },
