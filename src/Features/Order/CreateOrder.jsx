@@ -30,7 +30,7 @@ function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formErrors = useActionData();
-  const userName = useSelector((store) => store.user.userName);
+  const userName = useSelector((state) => state.user.userName);
   const cart = fakeCart;
 
   return (

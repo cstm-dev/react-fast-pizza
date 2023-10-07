@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Button from "utils/Button";
 
 function Home() {
-  const userName = useSelector((store) => store.user.userName);
+  const userName = useSelector((state) => state.user.userName);
 
   return (
     <div className="my-10 px-4 text-center sm:my-16">

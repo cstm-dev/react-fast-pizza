@@ -6,7 +6,7 @@ LinkButton.propTypes = {
   to: PropTypes.string,
 };
 
-function LinkButton({ children, to }) {
+function LinkButton({ children, to = "" }) {
   const navigate = useNavigate();
   const classes = "text-sm text-blue-500 hover:text-blue-600 hover:underline";
 
