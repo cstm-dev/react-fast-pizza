@@ -8,7 +8,7 @@ import LinkButton from "utils/LinkButton";
 
 function Cart() {
   const cart = useSelector(getCart);
-  const userName = useSelector(getUser);
+  const { userName } = useSelector(getUser);
   const dispatch = useDispatch();
 
   function handleClearCart() {

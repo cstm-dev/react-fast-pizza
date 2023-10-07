@@ -1,7 +1,7 @@
 async function getAddress({ latitude, longitude }) {
   try {
     const res = await fetch(
-      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}`
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}`,
     );
     const data = await res.json();
 
@@ -11,4 +11,10 @@ async function getAddress({ latitude, longitude }) {
   }
 }
 
-export { getAddress };
+function getPosition() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+
+export { getAddress, getPosition };
